@@ -1,3 +1,4 @@
+print("Ushtrimi i zgjidhur i if statement\n\n")
 a=3
 b=4 
 c=5 
@@ -13,7 +14,7 @@ elif d>a:
 else:
     print("Else i gabuar")
 
-
+print("Shembull  i zgjidhur i if statement\n\n")
 #Ekuacionet e fuqis se dyte
 
 a = int(input("a eshte "))
@@ -33,7 +34,7 @@ else:
     print(f'd eshte {d} kjo vlere eshte me e vogel se 0')
 
 ## Kompania
-
+print("Shembull i if statement\n\n")
 str = input("Vendos deparatamentin ")
 
 if str == 'it' or str == 'dig' or str == 'admin':
@@ -55,6 +56,7 @@ elif str == 'it' and str == 'admin':
 else:
     print("Ju nuk keni akses ")
 
+print("Ushtrimi i zgjidhur i if statement\n\n")
 ## Shkruaj nje program ku: 
 ## Te printoni rrogen mujore te punonjsit
 ## Nese oret e punes jane me shume se 40 athere shumzojini me 1.5 ato. 
@@ -74,7 +76,7 @@ else:
 ### i trekendshit qe shumzon diferencen midis tij dhe tre brinjeve te trekendshit
 ### dhe nese kendi eshte me i madhe se 90 por me i vogel se 180 athere formula eshte baze her lartesi shumzuar me sinusin e kendit
 ### nese kendi nuk i permbush kushtet shfaq nje error sipas deshires.
-
+print("Ushtrimi i zgjidhur if statement \n\n")
 import math # Nga python importojme librarin e funksioneve matematikore
 
 kendi = int(input("Vendos kendin e trekendshit "))
@@ -99,8 +101,35 @@ elif kendi >90 and kendi<180:
 else:
     print('Nuk mund te gjejm siperfaqen kendi nuk eshte i sakte')
 
-            
 
+
+### Shkruaj nje program i cili ne baze te komandes m jep listen e kengeve te fundit 
+### dhe kur vendos komanden f liston filmat e fundit
+
+print("Ushtrimi i zgjidhur i match statement\n\n")
+user_input = input('Shkruaj m per te listuar kenget e fundit, shkruaj f per te listuar filmat e fundit ne treg ')
+            
+match user_input:
+    case 'm':
+        print(  'Anti-HeroTaylor Swift.\n'+
+                'Unholy (feat. Kim Petras)Sam Smith, Kim Petras.\n'+
+                'CUFF ITBeyoncé\n'+
+                'As It WasHarry Styles.\n'+
+                'Calm Down (with Selena Gomez)Rema, Selena Gomez.\n'+
+                'Rich FlexDrake,21 Savage.\n'
+                'Miss YouOliver Tree, Robin Schulz.\n'
+                'I\'m Good (Blue)David Guetta, Bebe Rexha.\n')
+    case 'f':
+        print(  '#1. Black Panther: Wakanda Forever (2022) 84% 85% #1. ...'+
+                '#2. The Menu (2022) 89% 77% #2. ...\n'+
+                '#3. The Wonder (2022) 87% 71% #3. ...\n'+
+                '#4. Stutz (2022) 100% 97% #4. ...\n'+
+                '#5. Disenchanted (2022) 39% 56% #5. ...\n'+
+                '#6. Spirited (2022) 68% 82% #6. ...\n'+
+                '#7. Black Adam (2022) 39% 90% #7. ...\n'+
+                '#8. The Fabelmans (2022) 93% 79% #8.\n')
+    case _:
+        print('Faleminderit kthehuni perseri!')
 
 
 
