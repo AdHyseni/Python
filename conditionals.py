@@ -1,3 +1,4 @@
+"""
 print("Ushtrimi i zgjidhur i if statement\n\n")
 a=3
 b=4 
@@ -121,6 +122,7 @@ match user_input:
                 'I\'m Good (Blue)David Guetta, Bebe Rexha.\n')
     case 'f':
         print(  '#1. Black Panther: Wakanda Forever (2022) 84% 85% #1. ...'+
+                '' Test'+ 
                 '#2. The Menu (2022) 89% 77% #2. ...\n'+
                 '#3. The Wonder (2022) 87% 71% #3. ...\n'+
                 '#4. Stutz (2022) 100% 97% #4. ...\n'+
@@ -130,6 +132,39 @@ match user_input:
                 '#8. The Fabelmans (2022) 93% 79% #8.\n')
     case _:
         print('Faleminderit kthehuni perseri!')
+
+"""
+
+## Perseritje
+
+"""
+    Shkruaj nje program ne python ku: 
+    Te marri vlerat nga user per gjinin, moshen dhe peshen.
+
+    Pesha optimale eshte 60
+    1- Nese pesha eshte me e madhe se 60kg ateher printoni "Pesha juaj eshte optimale"
+    2- Nese pesha eshte me e vogel se 60kg, printoni "Kini kujdes, duhet te ushqeheni me mire"
+    3- Nese pesha eshte me e madhe se 60kg dhe me vogel se 120, printoni "Kini kujdes me peshen"
+    4- Nese pesha eshte me e madhe se 120kg , printoni "Kini kujdes keni tejkaluar limitin"
+"""
+
+gjinia = input("Vendos gjinin")
+mosha = int(input("Vendos moshen "))
+pesha = float(input("Vendos peshen "))
+if gjinia == 'f':
+    if mosha > 20:
+        if pesha == 60:
+            print('Pesha juaj eshte optimale ')
+        elif pesha < 60:
+            print("Kini kujdes, duhet te ushqeheni me mire")
+        elif pesha > 60 and pesha < 120:
+            print("Kini kujdes me peshen")
+        elif pesha >=120:
+            print("Kujdes keni tejkaluar limitin")
+        else:
+            print("Error")
+elif gjinia == 'm':
+
 
 
 
