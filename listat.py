@@ -16,30 +16,36 @@ lista_4 = lista_1*2
 #Kemi parasysh qe numerimi fillon nga 0
 
 lista = [1,2,3] # 0,1,2
-print(lista[0]) # index 0 = 0
+print(lista[0]) # index 0 = 1
 
 #nese duam te printojme te gjithe elementet perdorom ciklet
 for element in lista:
     print(element)
 
-a =0 # fillojm nga index 0
+#len(list) eshte e barabarte me nje numer, gjatesine e listes ne kete rast
+
+a = 0 # fillojm nga index 0
 while a <len(lista): #len tregon gjatesine e listes
     print(lista[a])
     a +=1 #incrementojme a ne menyre qe te marrim elementet e tjere
 
 # ndrysimi i vlerave 
 lista[0]= 0
-print(lista[0])
+lista[2]= True
+print(f'Lista mbas ndryshimeve eshte: {lista}')
 
 #metodat e listave
 x = len(lista) #tregon gjatesine e listes
 max = max(lista) #shpreh vleren me te madhe
 min = min(lista) #shpreh vleren me te vogel
-sum = sum(lista) #shpreh vleren me te shumen
+sum_1 = sum(lista) #shpreh vleren me te shumen
 
 
 list_unsorted = [332, 34,22,64,355,3,66]
-list_unsorted.sort(reverse=False) # ne momentin qe thrasim sort lista renditet
+shuma = sum(list_unsorted)
+print(f'Shuma e listes eshte: {shuma}')
+
+list_unsorted.sort(reverse=True) # ne momentin qe thrasim sort lista renditet
 print(list_unsorted)
 
 #prerja e listave ose slice 
