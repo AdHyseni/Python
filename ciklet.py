@@ -64,11 +64,6 @@ for i in a:
 
 }
 
-for i in JSON(""):
-    for k in json['objekti3']:
-        print(k)
-        for m in k['obejkti2']:
-            k['objekit2'] = k['objekti2'].max
 
 
 
