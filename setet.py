@@ -47,7 +47,7 @@ print(t)
 print(len(l))
 
 """
-
+"""
 a = [2,3,4]
 
 
@@ -69,9 +69,9 @@ while index < len(a):
 
 print(f'Shuma_2 eshte {shuma_2}')
 
-
+"""
 b = []
-print(len(b))
+print(f'Lista ka gjatesine : {len(b)}')
 kontrolli = True
 
 while kontrolli:
@@ -82,20 +82,40 @@ while kontrolli:
     elif tipi == 'int':
         u_input = int(input("Vendos numrin "))
         b.append(u_input)
+    elif tipi == 'bool':
+        u_input = int(input("Vendos numrin 0 per false ose 1 per True"))
+        if u_input ==1:
+            b.append(True)
+        elif u_input == 0:
+            b.append(False)
+        else:
+            print("Duhet te vendosni numrin 0 per false ose 1 per True")
     else:
-        print("Ju lutem vendosni int ose str")
+        print("Ju lutem vendosni int, str ose bool")
     repeat = input('Per te vendosur nje te dhene tjeter shkruani r per te fshire f: ')
     if repeat == 'r':
-        kontrolli = kontrolli
-    elif repeat == 'f':
+        kontrolli = kontrolli #True
+    elif repeat == 'f': #Me poshte eshte operacioni i fshirjes se nje te dhene
         print(b)
-        elementi_per_te_fshir = input('Shkruani elementin: ')
-        for element in b:
-            if  elementi_per_te_fshir == str(element):
-                b.remove(element)
-            else:
-                print('Error')
+        elementi_per_te_fshir = input('Shkruani elementin qe doni te fshini: ')
+        print(f"Ke shkruar: {elementi_per_te_fshir}")
+        # Hym ne cikel per te lexuar elementet e listes
+        index = 0 #Pika e fillimit
+        while index < len(b): # Ekzekutohu persa kohe kushti eshte True  
+            #Nese elementi ne index eshte i barabart me elementin qe duam te fshime athere fshije
+            #Fillimisht elementet jane pershtatur(konvertuar ne string), pasi input = str
+            if  elementi_per_te_fshir == str(b[index]): 
+                print(f'Eshte fshire: {b[index]}') #test
+                del b[index]
                 break
+            #Nese jo inkremento index dhe kalo perseri ne cikel
+            else:
+                #print(b[index])
+                #print(type(elementi_per_te_fshir))
+                print(type(b[index]))
+                print('Error')  
+                index +=1
+                continue       
     else:
         kontrolli = False
 print(b)
