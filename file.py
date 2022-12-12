@@ -37,16 +37,16 @@ komanda with e cila siguron qe ne fund te operimeve te mbyll file
 """
 
 with open('./file/text.txt', 'r') as f:
-     id = []
+     lorem = []
      for ln in f:
         if ln.startswith('Lorem'):
-            id.append(ln)
-print(id)
+            lorem.append(ln)
+print(lorem)
 
 
 #Hap nje file duke shkruar emrin e file
 emri = input('Shkruaj emrin e file: ')
-with open(f'./file/{emri}.txt','r') as file1:
+with open(f'./file/{emri}','r') as file1:
     for i in file1:
         print(i)
 
@@ -63,19 +63,24 @@ finally:
 
 
 
+
+
 try:
     emri_i_doc = input("Vendos emrin e dokumentit: ")
-    written_file = open(f'./file/{emri_i_doc}', 'w')
-    written_file.writelines('Ky eshte nje dokument i shkruar nga python')
+    doc_ri = open(f'./{emri_i_doc}', 'w')
+    doc_ri.writelines('Ky eshte nje dokument i shkruar nga python')
 finally:
-    written_file.close()
+    doc_ri.close()
+
+
+
 
 
 
 #shkruaj nje file duke perdorur listat 
 lista = ['ky ', 'eshte ', 'nje ', 'file ',' me ', 'kontent','nga ', 'nje ', 'list']
 try:
-    written_file_list = open('./file/list_file.txt', 'w')
+    written_file_list = open('./list_file.txt', 'w')
     for i in lista:
         written_file_list.writelines(i)
 finally:

@@ -117,6 +117,9 @@ while kontrolli:
                 index +=1
                 continue       
     else:
+        with open('./file/set_list.txt', 'w') as f:
+            for i in b:
+                f.writelines(i)
         kontrolli = False
 print(b)
 

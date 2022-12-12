@@ -1,0 +1,15 @@
+1-Krijoni nje fjalor ku:
+    -celsi te jete pyetja
+    -vlera pergjigja
+2-Printo celsat
+3-Printo vlerat
+4-Printo Celsat dhe vlerat duke perdorur for
+
+
+5-Krijo nje list me alternativa
+6-Krijo nje funksion ku te printosh pyetjet me 3-4 alternativa 
+dhe pergjigjen gjithashtu
+(bonus: krijo nje liste temp, ku te vendosesh alternativat dhe pergjigjen)
+
+
+
