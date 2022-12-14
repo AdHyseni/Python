@@ -1,0 +1,5 @@
+1- Hidhini nje sy objekteve, klasave, 
+2- Cesht polimorfizmi dhe trashigimia ne OOP
+
+3-Krijoni nje klase Kafshe
+4-Krijoni 3 klasa qe trashegojne vetite dhe sjelljet e klases Kafshe
