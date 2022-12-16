@@ -1,15 +1,4 @@
-pyetjet = {
-    'Cili eshte shteti me sip me te madhe?':'Rusia',
-    'Cili eshte shteti me popullsine me te madhe?':'Kina',
-    'A eshte Australia nje kontinent me vete?':'Po',
-    'A ndodhet Shqiperia ne kontinentin e Amerikes se Veriut':'Jo'
-}
 
-list_alternativa_gjografi = ['USA','Rusia','Australia','Italia']
-
-
-def pyetsori_v1():
-    pass
 
 
 def pyetsori(

@@ -18,7 +18,11 @@ class Bird():
     def ecen(self):
         print("Ky shpend ecen")
 
-    
+
+import math as m # krijojm objektin m i cili i referohet klases math
+
+
+  
         
 shpendi_1 = Bird('e verdh', 30, 'vogel')
 print(shpendi_1)
