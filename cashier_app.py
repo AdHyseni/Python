@@ -50,18 +50,12 @@ class cashieringsystem:
                 print("Invalid option")
 
 
-
-
-
 def main():
     a = cashieringsystem()
 
     while (1):
 
             a.foods()
-
-
-
 
 
 main()

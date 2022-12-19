@@ -1,0 +1,3 @@
+1 -- Produkti HP, PC, viti i prodhimit 2010 me sasine 2 i blere me date 2022-12-19 cmimin total 600
+2 -- Produkti Apple, Laptop, viti i prodhimit 2022 me sasine 3 i blere me date 2022-12-19 cmimin total 9000
+------------Totali i fatures eshte: 9600 ALL------------------------

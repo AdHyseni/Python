@@ -30,8 +30,10 @@ class Storag():
         
     def show_items(self):
         for key,values in self.items_storage.items():
-            print(values.item.emri) # Printoni dhe te dhenat e tjera
-
+            print(f'{values.item.emri}, {values.item.price},{values.item.viti_prodh},{values.qty}') # Printoni dhe te dhenat e tjera
+    
+    
+    
     def search_item(self):
         input_name = input("Vendos emrin e produktit qe doni te kontrolloni: ")
         counter = 0
@@ -66,7 +68,7 @@ class Storag():
 
         
 storage = Storag()
-
+storage.show_items()
 
 
 

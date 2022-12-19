@@ -1,9 +1,9 @@
-import time
+from datetime import date
 
 class Invoice():
-    def __init__(self,item_qty,desc,total) -> None:
-        self.Item_quantity = item_qty
-        self.desc = desc
+    def __init__(self,item_qty,date,total) -> None:
+        self.item_qty = item_qty
+        self.date = date
         self.total = total
 
 class Item():
@@ -54,42 +54,41 @@ class Storage():
                 if qty <= v.qty:
                     new_qty = v.qty - qty
                     self.storage.update({k:Item_qty(Item(name,v.item.desc,v.item.price,v.item.prod_year),new_qty)})
-                    return Item_qty(Item(name,v.item.desc,v.item.price,v.item.prod_year),new_qty)
+                    return Item_qty(Item(name,v.item.desc,v.item.price,v.item.prod_year),qty)
                 else:
                     print('Sasia eshte me e madhe se sasia e ruajtur ne magazine')
             elif i >= len(self.storage.items()):
                 print('Produkti nuk ekziston')
         
 
-# s = Storage()
-# s.add('Samsung','tel',1200,2022,3)
-
-# l = s.buy('Samsung',2)
-# print(l.item.price)
-
-
-
 class Kasa():
-    shporta = []
+    shporta = {}
 
     def buy(self):
         a = True
+        counter =0
         while a:
             item_name = input('Shkruaj emrin e produktit: ')
-            item_qyt = int(input('Shkruaj sasine e produktit'))
+            item_qyt = int(input('Shkruaj sasine e produktit '))
             storage = Storage()
             item = storage.buy_item(item_name,item_qyt)
             total_price = item.item.price * item_qyt
-            self.shporta.append([item.item.name,item.item.desc,item.item.price,item_qyt,total_price])
+            self.shporta[counter] = Invoice(Item_qty(Item(item.item.name,item.item.desc,item.item.price,item.item.prod_year),item_qyt),f'{date.today()}',total_price)
             user_in = input('Doni te shtoni produkt tjeter ? Nese po ather shkruani po ose cdo gje tjeter per te dale. ')
             if user_in == 'po':
                 a = True
+                counter += 1
             else:
-
-                with open(f'./file/invoice{time.time()}.txt','w') as invoice:
-                    for i in self.shporta:
-                        invoice.writelines(f'Produkti {i[0]}, {i[1]}, viti i prodhimit {i[2]} me sasine {i[3]} dhe cmimin total {i[4]}')
+                total_price_inv = 0
+                for k,v in self.shporta.items():
+                    total_price_inv += v.total
+                    print(f'Totali eshte {v.total}')
+                with open(f'./file/invoice{date.today()}.txt','w') as invoice:
+                    for k,v in self.shporta.items():
+                        invoice.writelines(f'{k+1} -- Produkti {v.item_qty.item.name}, {v.item_qty.item.desc}, viti i prodhimit {v.item_qty.item.prod_year} me sasine {v.item_qty.qty} i blere me date {v.date} cmimin total {v.total}\n')
+                    invoice.writelines(f'------------Totali i fatures eshte: {total_price_inv} ALL------------------------')
                 a = False 
+
 
     def main(self):
         user_input = input('Shkruaj\n1 Per te pare listen e produkteve\n2 Per te kerkuar nje Produkt\n3 Per te blere nje produkt ')
