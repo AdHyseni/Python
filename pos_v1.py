@@ -12,10 +12,10 @@ class Item_qty():
         self.qty = qty
 
     
-class Inventory():
-    def __init__(self,item_qty, desc,total) -> None:
+class Bill():
+    def __init__(self,item_qty, date,total):
         self.item_qty = item_qty
-        self.desc = desc
+        self.date = date
         self.total = total
     
 class Storag():
@@ -30,8 +30,7 @@ class Storag():
         
     def show_items(self):
         for key,values in self.items_storage.items():
-            print(f'{values.item.emri}, {values.item.price},{values.item.viti_prodh},{values.qty}') # Printoni dhe te dhenat e tjera
-    
+            print(f'Emri {values.item.emri} ,Cmimi {values.item.price}, viti i prodhimit: {values.item.viti_prodh}, sasia {values.qty}') # Printoni dhe te dhenat e tjera
     
     
     def search_item(self):
@@ -51,27 +50,74 @@ class Storag():
         print(new_key)
         self.items_storage[new_key] = Item_qty(Items(e, d,p,v),q)
 
-    def buy_item(self,name,qty):
-        i = 0
-        for k,v in self.storage.items():
-            i += 1
-            if name == v.item.name:
-                if qty <= v.qty:
-                    new_qty = v.qty - qty
-                    self.storage.update({k:Item_qty(Item(name,v.item.desc,v.item.price,v.item.prod_year),new_qty)})
-                    return Item_qty(Item(name,v.item.desc,v.item.price,v.item.prod_year),new_qty)
+    def buy_item(self,name,qty_def):
+        counter = 0
+        for k,v in self.items_storage.items():
+            counter += 1
+            if name == v.item.emri:
+                if qty_def <= v.qty:
+                    new_qty = v.qty - qty_def
+                    self.items_storage.update({k:Item_qty(Items(v.item.emri,v.item.desc,v.item.price,v.item.viti_prodh),new_qty)})
+                    return Item_qty(Items(name,v.item.desc,v.item.price,v.item.viti_prodh),qty_def)
                 else:
                     print('Sasia eshte me e madhe se sasia e ruajtur ne magazine')
-            elif i >= len(self.storage.items()):
+            elif counter >= len(self.items_storage.items()):
                 print('Produkti nuk ekziston')
 
 
         
-storage = Storag()
-storage.show_items()
+# storage = Storag()
+# y = storage.buy_item('HP',2) # vlera e funksionit eshte nje objekt
 
+# print('Objekti ',y)
+# storage.search_item()
 
+from datetime import date
 
 class Kasa():
-    pass
+    shporta = {}
+
+    def buy(self):
+        storage = Storag() #i referohet klases Storage, nga ktu mund te therrasim cdo sjellje te Storage
+        a = True # Kontrollon ciklin
+        key = 1 # Eshte celsi i fjalorit(shporta)
         
+        while a: 
+            prod_name = input('Shkruaj emrin e produktit ') #Kerkojme emrin e item
+            prod_qty = input('Shkruaj sasine ') #Sasine qe duam te blem
+            produkti = storage.buy_item(prod_name,int(prod_qty)) #Ne momentin qe therrasim buy_item nga storage ne marrim nje objekt me te dhenat e item dhe sasin
+            totali_per_produkt = int(prod_qty)*produkti.item.price
+            self.shporta[key] = Bill(produkti,date.today(),totali_per_produkt)
+            user_input = input('Shkruaj po per te vazhduar ose cdo gje tjt per te dale ')
+            if user_input == 'po':
+                a = True
+                key +=1 #inkremento celsin
+            else:
+                a = False
+                with open(f'fatura-{date.today()}.txt','w') as f:
+                    totali = 0
+                    for k,v in self.shporta.items():
+                        totali += v.total
+                    for k,v in self.shporta.items():
+                        f.writelines(f'{k}--Emri i produktit: {v.item_qty.item.emri}---Pershkrimi: {v.item_qty.item.desc}---Totali: {v.total}\n')
+                    f.writelines(f'--------------Totali per te paguar eshte: {totali} Eu \n')
+
+    
+    
+    
+    def main(self):
+        user_input = input('Shkruaj 1 per te pare produktet\nShkruaj 2 per te kerkuar nje produkt\nShkruaj 3 per te blere nje produkt:\n')
+        storage = Storag()
+        match user_input:
+            case '1':
+                storage.show_items()
+            case '2':
+                storage.search_item()
+            case '3':
+                self.buy()
+            case _:
+                print('Faleminderit qe blete ne dyqanin tone')
+
+
+kasa = Kasa()
+kasa.buy()
