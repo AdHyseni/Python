@@ -18,7 +18,7 @@ class Bill():
         self.date = date
         self.total = total
     
-class Storag():
+class Storage():
     items_storage = {
         1: Item_qty(Items(emri='HP',desc='Laptop',price=300,viti_prodh=2010),qty=10),
         2: Item_qty(Items(emri='Xiaomi',desc='Monitor',price=200,viti_prodh=2020),qty=10),
@@ -61,8 +61,10 @@ class Storag():
                     return Item_qty(Items(name,v.item.desc,v.item.price,v.item.viti_prodh),qty_def)
                 else:
                     print('Sasia eshte me e madhe se sasia e ruajtur ne magazine')
+                    return 0
             elif counter >= len(self.items_storage.items()):
                 print('Produkti nuk ekziston')
+                return 0
 
 
         
@@ -78,7 +80,7 @@ class Kasa():
     shporta = {}
 
     def buy(self):
-        storage = Storag() #i referohet klases Storage, nga ktu mund te therrasim cdo sjellje te Storage
+        storage = Storage() #i referohet klases Storage, nga ktu mund te therrasim cdo sjellje te Storage
         a = True # Kontrollon ciklin
         key = 1 # Eshte celsi i fjalorit(shporta)
         
@@ -86,28 +88,31 @@ class Kasa():
             prod_name = input('Shkruaj emrin e produktit ') #Kerkojme emrin e item
             prod_qty = input('Shkruaj sasine ') #Sasine qe duam te blem
             produkti = storage.buy_item(prod_name,int(prod_qty)) #Ne momentin qe therrasim buy_item nga storage ne marrim nje objekt me te dhenat e item dhe sasin
-            totali_per_produkt = int(prod_qty)*produkti.item.price
-            self.shporta[key] = Bill(produkti,date.today(),totali_per_produkt)
-            user_input = input('Shkruaj po per te vazhduar ose cdo gje tjt per te dale ')
-            if user_input == 'po':
-                a = True
-                key +=1 #inkremento celsin
+            if produkti == 0:
+                print("Nuk mund te bej blerjen")
             else:
-                a = False
-                with open(f'fatura-{date.today()}.txt','w') as f:
-                    totali = 0
-                    for k,v in self.shporta.items():
-                        totali += v.total
-                    for k,v in self.shporta.items():
-                        f.writelines(f'{k}--Emri i produktit: {v.item_qty.item.emri}---Pershkrimi: {v.item_qty.item.desc}---Totali: {v.total}\n')
-                    f.writelines(f'--------------Totali per te paguar eshte: {totali} Eu \n')
+                totali_per_produkt = int(prod_qty)*produkti.item.price
+                self.shporta[key] = Bill(produkti,date.today(),totali_per_produkt)
+                user_input = input('Shkruaj po per te vazhduar ose cdo gje tjt per te dale ')
+                if user_input == 'po':
+                    a = True
+                    key +=1 #inkremento celsin
+                else:
+                    a = False
+                    with open(f'fatura-{date.today()}.txt','w') as f:
+                        totali = 0
+                        for k,v in self.shporta.items():
+                            totali += v.total
+                        for k,v in self.shporta.items():
+                            f.writelines(f'{k}--Emri i produktit: {v.item_qty.item.emri}---Pershkrimi: {v.item_qty.item.desc}---Totali: {v.total}\n')
+                        f.writelines(f'--------------Totali per te paguar eshte: {totali} Eu \n')
 
     
     
     
     def main(self):
         user_input = input('Shkruaj 1 per te pare produktet\nShkruaj 2 per te kerkuar nje produkt\nShkruaj 3 per te blere nje produkt:\n')
-        storage = Storag()
+        storage = Storage()
         match user_input:
             case '1':
                 storage.show_items()
@@ -120,4 +125,4 @@ class Kasa():
 
 
 kasa = Kasa()
-kasa.buy()
+kasa.main()

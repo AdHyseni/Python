@@ -14,13 +14,13 @@ Karakteret
 
 []	Nje set me karaktere	"[a-m]"	
 \	Sinjalizon nje sekuence speciale "\d"	
-.	Cdo karakter pervec \n 	"he..o"	
+.	Cdo karakter pervec \n 	"he..o"	  
 ^	Fillon me..."^hello"	
 $	Mbaron me with	"planet$"	
-*	0 ose asnje raste	"he.*o"	
+*	0 ose disa raste	"he.*o"	
 +	1 ose me shume raste	"he.+o"	
 ?	0-1 raste	"he.?o"	
-{}	Raste ekzakte	"he.{2}o"	
+{}	Raste ekzakte	"he.{2}o" 	
 |	Ose 	"falls|stays"	
 ()	Perzgjidh dhe grupo
 
@@ -44,15 +44,13 @@ Setet
 [a-n]	Sjell rasastet kur kushti eshte perputhur, shkronjat e vogla nga a ne n	
 [^arn]	Sjell te gjitha rastet kur a,r dhe n nuk jane perdorur	
 [0123]	Sjell te gjitha rastet kur 0,1,2,3 eshte perdorur
-[0-9]	Sjell te gjitha rastet kur jane perdorur numra nga 1-9	
+[0-9]	Sjell te gjitha rastet kur jane perdorur numra nga 0-9	
 [0-5][0-9]	Pret te gjithe numra 2shifror nga 00 ne 59	
+[0-9][0-9][0-9]
 [a-zA-Z]	Pret te gjithe shkronjat te vogla ose te medha nga a ne z	
+[A-Z]
 [+]	Ne sete, +, *, ., |, (), $,{} nuk kan ndonje kuptim special, [+] Pret qe te perdoret simboli i +
 """
-
-
-
-
 
 
 import re # ose gjate regex, eshte libraria per regular expression
@@ -61,12 +59,11 @@ for line in hand:
     line = line.rstrip()
     # if re.search('[A-Za-z]', line):
     #     print(line)
-    # if re.search('[0-9]', line):
-    #     print(line)
-    if re.search('[^0-9]',line):
-        print(line)
+    if re.findall('[^lorem]', line):
+         print(line)
+    #if re.search('[0-9]',line):
+    #   print(line)
 hand.close()
-
 
 regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
 #valido nje email
@@ -79,6 +76,9 @@ def check(email):
  
 
 email = "adii2@gmail.com"
+check(email)
+
+email = "visi9_+@G02-.doc"
 check(email)
 
 email = "my.ownsite@our-earth.org"
@@ -95,14 +95,14 @@ print(re.match(words_pattern, '80001-2222')) # Printon Match object
 print(re.match(words_pattern, '800010')) # Printon None
 
 """
-The regular expression below cheks that a password:
+# The regular expression below cheks that a password:
 
-Minimumi 8 karaktere {8,}
-Te pakten nje shkronje te madhe.(?=.*?[A-Z])
-Te pakten nje shkronje te vogel (?=.*?[a-z])
-Te pakten nje numer (?=.*?[0-9])
-Te pakten nje simbol(?=.*?[#?!@$%^&*-])
-"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"
+# Minimumi 8 karaktere {8,}
+# Te pakten nje shkronje te madhe.(?=.*?[A-Z])
+# Te pakten nje shkronje te vogel (?=.*?[a-z])
+# Te pakten nje numer (?=.*?[0-9])
+# Te pakten nje simbol(?=.*?[#?!@$%^&*-])
+# "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"
 """
 
 password_pattern = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"
@@ -110,3 +110,6 @@ x= re.match(password_pattern, 'secret') # Printon None
 print(x)
 y= re.match(password_pattern, '-Secr3t.') # Printon Match object
 print(y)
+
+
+
